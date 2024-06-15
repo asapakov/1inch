@@ -5,69 +5,44 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+  <p align="center">File storage API service by Alikhan Sapakov<p align="center">
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Project Overview
+This project is a file management system built using Nest.js and MinIO, focusing on efficient file upload, retrieval, and deletion operations.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Features: </br>
+File Upload: Uploads files securely to a MinIO object storage bucket.<br/>
+File Retrieval: Retrieves files based on their version from the MinIO storage.<br/>
+File Deletion: Deletes files from the MinIO bucket while logging deletion events.<br/>
+Logging: Records file creation and deletion events in MongoDB for audit and tracking purposes.<br/>
 
-## Installation
+Technologies Used:<br/>
+<b>Nest.js</b>: A progressive Node.js framework for building efficient, scalable applications.<br/>
+<b>MinIO</b>: An open-source object storage system compatible with Amazon S3.<br/>
+<b>TypeScript</b>: Provides static typing and other advanced features to enhance code quality and maintainability.<br/>
+<b>Swagger</b>: As a documentation for endpoints (/api-docs)
+
+Setup:
+Clone Repository: git clone https://github.com/asapakov/1inch.git <br/>
+Use node version: 18+ (18.16.0)<br/>
+Install Dependencies: npm install<br/>
+Run Application: <b>npm run start:dev</b>.
+Go to http://localhost:3000/api-docs
+
+Usage:
+Auth: Make a POST request to /auth/login using username and userId<br/> 
+Retrieve Files: Access files via the /files/:version endpoint, providing the version identifier. (No need auth)<br/>
+Upload Files: Use the /upload endpoint to upload files. Ensure valid authentication and permissions are set.(Need Authorization header)<br/>
+Delete Files: Utilize the /files/:version endpoint with a DELETE request to remove files securely.(Need Authorization header)<br/>
+
+
+## Run using docker
 
 ```bash
-$ npm install
+$ docker compose up
 ```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - [Alikhan Sapakov](https://www.linkedin.com/in/alikhan-sapakov-004a34246/)
