@@ -11,8 +11,10 @@ services:
       MINIO_ACCESS_KEY: 1inch-access-key
       MINIO_SECRET_KEY: 1inch-secret-key
       MINIO_BUCKET_NAME: files
+      MONGODB_URI: mongodb://mongodb:27017/1inch
     depends_on:
       - minio-server
+      - mongodb
     networks:
       - app-network
 
@@ -30,6 +32,19 @@ services:
     networks:
       - app-network
 
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local

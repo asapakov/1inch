@@ -68,7 +68,7 @@ describe('FilesController (e2e)', (): void => {
   it('should return 201 for POST /file/private with valid token', () => {
     filesServiceMock.uploadFile.mockResolvedValue('test-version');
 
-    const token = 'Bearer ' + jwtService.sign({ username: 'test', sub: '1' });
+    const token = 'Bearer ' + jwtService.sign({ username: 'test', userId: 1 });
 
     return request(app.getHttpServer())
       .post('/file/private')
@@ -79,7 +79,7 @@ describe('FilesController (e2e)', (): void => {
   });
 
   it('should return 200 for DELETE /file/private/:version with valid token', () => {
-    const token = 'Bearer ' + jwtService.sign({ username: 'test', sub: '1' });
+    const token = 'Bearer ' + jwtService.sign({ username: 'test', userId: 1 });
 
     return request(app.getHttpServer())
       .delete('/file/private/test-version')

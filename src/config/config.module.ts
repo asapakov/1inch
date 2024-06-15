@@ -1,6 +1,5 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import * as process from 'node:process';
 
 const config = () => ({
   minio: {
@@ -8,6 +7,9 @@ const config = () => ({
     accessKey: process.env.MINIO_ACCESS_KEY,
     secretKey: process.env.MINIO_SECRET_KEY,
     bucketName: process.env.MINIO_BUCKET_NAME,
+  },
+  mongodb: {
+    uri: process.env.MONGODB_URI,
   },
 });
 

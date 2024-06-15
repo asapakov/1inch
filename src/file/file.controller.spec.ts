@@ -41,22 +41,36 @@ describe('FilesController', () => {
         originalname: 'test.png',
         buffer: Buffer.from(''),
       } as Express.Multer.File;
+      const mockUserId = 1;
+      const mockReq = {
+        user: { userId: mockUserId },
+      };
       const mockFileName = 'test.png';
       filesServiceMock.uploadFile.mockResolvedValue(mockFileName);
 
-      const result = await controller.uploadFile(mockFile);
+      const result = await controller.uploadFile(mockFile, mockReq);
 
       expect(result).toEqual({ version: mockFileName });
-      expect(filesServiceMock.uploadFile).toHaveBeenCalledWith(mockFile);
+      expect(filesServiceMock.uploadFile).toHaveBeenCalledWith(
+        mockFile,
+        mockUserId,
+      );
     });
   });
 
   describe('deleteFile', () => {
     it('should delete a file by version', async () => {
       const version = 'test.png';
-      await controller.deleteFile(version);
+      const mockUserId = 1;
+      const mockReq = {
+        user: { userId: mockUserId },
+      };
+      await controller.deleteFile(version, mockReq);
 
-      expect(filesServiceMock.deleteFile).toHaveBeenCalledWith(version);
+      expect(filesServiceMock.deleteFile).toHaveBeenCalledWith(
+        version,
+        mockUserId,
+      );
     });
   });
 

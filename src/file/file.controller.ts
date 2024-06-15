@@ -8,6 +8,7 @@ import {
   Get,
   Res,
   UseGuards,
+  Req,
   HttpStatus,
 } from '@nestjs/common';
 import {
@@ -57,8 +58,12 @@ export class FilesController {
       },
     },
   })
-  async uploadFile(@UploadedFile() file: Express.Multer.File): Promise<any> {
-    const fileName: string = await this.filesService.uploadFile(file);
+  async uploadFile(
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: any,
+  ): Promise<any> {
+    const userId = req.user?.userId;
+    const fileName: string = await this.filesService.uploadFile(file, userId);
     return { version: fileName };
   }
 
@@ -68,8 +73,12 @@ export class FilesController {
   @ApiOperation({ summary: 'Delete a file by version' })
   @ApiResponse({ status: HttpStatus.OK, description: 'File deleted' })
   @ApiParam({ name: 'version', required: true })
-  async deleteFile(@Param('version') version: string): Promise<void> {
-    await this.filesService.deleteFile(version);
+  async deleteFile(
+    @Param('version') version: string,
+    @Req() req: any,
+  ): Promise<void> {
+    const userId = req.user?.userId;
+    await this.filesService.deleteFile(version, userId);
   }
 
   @Get('public/:version')
