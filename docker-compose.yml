@@ -1,0 +1,35 @@
+version: '3'
+services:
+  nest-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      MINIO_ENDPOINT: minio-server
+      MINIO_ACCESS_KEY: 1inch-access-key
+      MINIO_SECRET_KEY: 1inch-secret-key
+      MINIO_BUCKET_NAME: files
+    depends_on:
+      - minio-server
+    networks:
+      - app-network
+
+  minio-server:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: 1inch-access-key
+      MINIO_SECRET_KEY: 1inch-secret-key
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
+    command: server /data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
