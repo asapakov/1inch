@@ -26,13 +26,10 @@ export class FilesService {
 
     const fileExt: string = path.extname(file.originalname);
     const fileName: string = `${uuid()}${fileExt}`;
-    const filePath: string = path.join(
-      __dirname,
-      '..',
-      '..',
-      'uploads',
-      fileName,
-    );
+    const uploadDir: string = path.join(__dirname, '..', '..', 'uploads');
+    const filePath: string = path.join(uploadDir, fileName);
+    await fs.promises.mkdir(uploadDir, { recursive: true });
+
     await fs.promises.writeFile(filePath, file.buffer);
 
     await client.putObject(this.bucketName, fileName, filePath);
