@@ -10,6 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     ConfigurationModule,
     AuthModule,
     FilesModule,
+    // connect to mongoDb
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({

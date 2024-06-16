@@ -9,7 +9,7 @@
 </p>
 
 ## Project Overview
-This project is a file management system built using Nest.js and MinIO, focusing on efficient file upload, retrieval, and deletion operations.
+This project is a file management system built using Nest.js and MinIO, focusing on efficient file upload, retrieval, and deletion operations with logging using MongoDB.
 
 Features: </br>
 File Upload: Uploads files securely to a MinIO object storage bucket.<br/>
@@ -32,9 +32,9 @@ Go to http://localhost:3000/api-docs
 
 Usage:
 Auth: Make a POST request to /auth/login using username and userId<br/> 
-Retrieve Files: Access files via the /files/:version endpoint, providing the version identifier. (No need auth)<br/>
-Upload Files: Use the /upload endpoint to upload files. Ensure valid authentication and permissions are set.(Need Authorization header)<br/>
-Delete Files: Utilize the /files/:version endpoint with a DELETE request to remove files securely.(Need Authorization header)<br/>
+Retrieve Files: Access files via the /file/public/:version endpoint, providing the version identifier. (No need auth)<br/>
+Upload Files: Use the /file/private endpoint to upload files. Ensure valid authentication and permissions are set.(Need Authorization header)<br/>
+Delete Files: Utilize the /file/private/:version endpoint with a DELETE request to remove files securely.(Need Authorization header)<br/>
 
 
 ## Run using docker
