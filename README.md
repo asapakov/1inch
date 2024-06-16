@@ -21,7 +21,8 @@ Technologies Used:<br/>
 <b>Nest.js</b>: A progressive Node.js framework for building efficient, scalable applications.<br/>
 <b>MinIO</b>: An open-source object storage system compatible with Amazon S3.<br/>
 <b>TypeScript</b>: Provides static typing and other advanced features to enhance code quality and maintainability.<br/>
-<b>Swagger</b>: As a documentation for endpoints (/api-docs)
+<b>Swagger</b>: As a documentation for endpoints (/api-docs)<br/>
+<b>Husky</b>: As a pre-commit hook control system, which runs linter, unit and e2e tests before commit
 
 Setup:
 Clone Repository: git clone https://github.com/asapakov/1inch.git <br/>
@@ -41,6 +42,18 @@ Delete Files: Utilize the /file/private/:version endpoint with a DELETE request 
 
 ```bash
 $ docker compose up
+```
+
+## Testing application
+
+### unit-testing
+```bash
+$ npm run test
+```
+
+### e2e-testing
+```bash
+$ npm run test:e2e
 ```
 
 ## Stay in touch
